@@ -1,12 +1,24 @@
 $(document).ready(function() {
 
-    $("#toogle").on("click", function() {
-    	var opened = $(".hamburger").data("opened");
+    function createUser (name) {
+    	return "<li>" + name + "</li>";
+    }
 
-    	$(".hamburger").stop().transition({
-    		x: opened ? 0 : $(".hamburger").outerWidth()
-    	});
+    var input = $(".form").find("input[name='user']");
+    var list = $("<ul></ul>").insertBefore($(".form"));
 
-    	$(".hamburger").data("opened", opened ? false : true);
+    $(".form").on("submit", function (e) {
+    	e.preventDefault();
+
+    	var name = $.trim( input.val() );
+
+    	if (name == "") {
+    		input.addClass("invalid");
+    		return;
+    	}
+
+    	input.removeClass("invalid").val("");
+
+    	list.append( createUser(name) );
     });
 });

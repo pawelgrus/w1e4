@@ -27,3 +27,7 @@
 .hamburger-link {
 	display: block;
 }
+
+.invalid {
+	border: 2px solid red;
+}
